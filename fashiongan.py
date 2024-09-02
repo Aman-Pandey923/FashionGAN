@@ -1,19 +1,18 @@
-import tensorflow as tf # type: ignore
-import tensorflow_datasets as tfds # type: ignore
-from matplotlib import pyplot as plt # type: ignore
-import numpy as np # type: ignore
-from tensorflow.keras.models import Sequential # type: ignore
-from tensorflow.keras.layers import Conv2D, Dense, Flatten, Reshape, LeakyReLU, Dropout, UpSampling2D # type: ignore
-from tensorflow.keras.optimizers import Adam # type: ignore
-from tensorflow.keras.losses import BinaryCrossentropy # type: ignore
-from tensorflow.keras.models import Model # type: ignore
+import tensorflow as tf
+import tensorflow_datasets as tfds
+from matplotlib import pyplot as plt 
+import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, Dense, Flatten, Reshape, LeakyReLU, Dropout, UpSampling2D
+from tensorflow.keras.optimizers import Adam 
+from tensorflow.keras.losses import BinaryCrossentropy 
+from tensorflow.keras.models import Model 
 import os
-from tensorflow.keras.preprocessing.image import array_to_img # type: ignore
-from tensorflow.keras.callbacks import Callback # type: ignore
+from tensorflow.keras.preprocessing.image import array_to_img 
+from tensorflow.keras.callbacks import Callback 
 
 
 ds = tfds.load('fashion_mnist', split='train')
-
 dataiterator = ds.as_numpy_iterator()
 
 ifg, ax = plt.subplots(ncols=4, figsize=(20, 20))
@@ -61,7 +60,6 @@ def build_generator():
     return model
 
 generator = build_generator()
-
 generator.summary()
 
 img = generator.predict(np.random.randn(4, 128, 1))
